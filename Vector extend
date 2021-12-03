@@ -1,0 +1,15 @@
+set cut_paste_input [stack 0]
+version 11.3 v2
+push 0
+push $cut_paste_input
+VectorExtendEdge {
+ inputs 2
+ name VectorExtendEdge3
+ selected true
+ xpos -2900
+ ypos -3711
+ from0 rgba.alpha
+ preblur 3.65
+ preblur_vector 5.7
+ vector_length 6.4
+}
