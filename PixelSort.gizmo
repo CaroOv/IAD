@@ -1,5 +1,6 @@
 Group {
  inputs 2
+ name Pixelsort
  addUserKnob {20 PixelSortTab l PixelSort}
  addUserKnob {7 rotate t "rotate line direction" R -180 180}
  rotate 90
