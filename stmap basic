@@ -1,0 +1,20 @@
+set cut_paste_input [stack 0]
+version 9.0 v5
+push $cut_paste_input
+Expression {
+expr0 x/width
+expr1 y/height
+name Expression1
+selected true
+xpos -1360
+ypos -150
+}
+push 0
+STMap {
+inputs 2
+uv rgb
+name STMap1
+selected true
+xpos -1250
+ypos -156
+}
