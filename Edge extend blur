@@ -1,0 +1,637 @@
+
+set cut_paste_input [stack 0]
+version 11.3 v1
+push $cut_paste_input
+Group {
+ name EdgeExtendBlur
+ tile_color 0xcc804eff
+ note_font_size 10
+ selected true
+ xpos 400
+ ypos 345
+ addUserKnob {20 CTRL}
+ addUserKnob {26 EXTENTION}
+ addUserKnob {7 ZoneMatiere R 0 10}
+ ZoneMatiere 10
+ addUserKnob {7 ExtendSize R 0 60}
+ ExtendSize 20
+ addUserKnob {26 SMOOTH_RACCORD}
+ addUserKnob {7 Smooth l SmoothRaccord R 1 6}
+ Smooth 20
+ addUserKnob {7 SmoothProgressif_Multiplier R 1 1.5}
+ SmoothProgressif_Multiplier 1
+}
+ Input {
+  inputs 0
+  name InputMask
+  xpos 331
+  ypos 1611
+  number 1
+ }
+ Input {
+  inputs 0
+  name InputSource
+  xpos 555
+  ypos 229
+ }
+ Dot {
+  name Dot100
+  tile_color 0x8ce08ff
+  xpos 589
+  ypos 354
+ }
+set N24ebb890 [stack 0]
+ Dot {
+  name Dot111
+  tile_color 0x8ce08ff
+  xpos 777
+  ypos 354
+ }
+set N276ce6e0 [stack 0]
+ Dot {
+  name Dot112
+  tile_color 0x8ce08ff
+  xpos 777
+  ypos 1504
+ }
+push $N24ebb890
+ Dot {
+  name Dot101
+  tile_color 0x8ce08ff
+  xpos 453
+  ypos 354
+ }
+set N31d3bf00 [stack 0]
+ Dot {
+  name Dot102
+  tile_color 0x8ce08ff
+  xpos 318
+  ypos 354
+ }
+set N31d29aa0 [stack 0]
+ Dot {
+  name Dot103
+  tile_color 0x8ce08ff
+  xpos 173
+  ypos 354
+ }
+set N27694f80 [stack 0]
+ Dot {
+  name Dot104
+  tile_color 0x8ce08ff
+  xpos 19
+  ypos 354
+ }
+set N31cfe220 [stack 0]
+ Dot {
+  name Dot105
+  tile_color 0x8ce08ff
+  xpos -117
+  ypos 354
+ }
+set N288f73c0 [stack 0]
+ Dot {
+  name Dot106
+  tile_color 0x8ce08ff
+  xpos -263
+  ypos 354
+ }
+set N8b1f7170 [stack 0]
+ Dot {
+  name Dot107
+  tile_color 0x8ce08ff
+  xpos -395
+  ypos 354
+ }
+set N275f2ad0 [stack 0]
+ Dot {
+  name Dot108
+  tile_color 0x8ce08ff
+  xpos -524
+  ypos 354
+ }
+set N31cdbab0 [stack 0]
+ Dot {
+  name Dot109
+  tile_color 0x8ce08ff
+  xpos -660
+  ypos 354
+ }
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode1
+  xpos -694
+  ypos 418
+ }
+ Premult {
+  name Premult18
+  xpos -694
+  ypos 454
+ }
+ EdgeBlur {
+  size {{parent.Smooth}}
+  name EdgeBlur_MASTER
+  note_font_size 15
+  note_font_color 0xffffffff
+  xpos -694
+  ypos 639
+ }
+ Dot {
+  name Dot110
+  tile_color 0x8ce08ff
+  xpos -660
+  ypos 1319
+ }
+push $N31cdbab0
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode3
+  xpos -558
+  ypos 418
+ }
+ Premult {
+  name Premult31
+  xpos -558
+  ypos 454
+ }
+ Blur {
+  size {{"(parent.BlurMASTER.size /8)"}}
+  name Blur38
+  xpos -558
+  ypos 478
+ }
+ Unpremult {
+  name Unpremult9
+  xpos -558
+  ypos 560
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer12
+  xpos -558
+  ypos 584
+ }
+ Premult {
+  name Premult32
+  xpos -558
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur_MASTER.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur10
+  xpos -558
+  ypos 644
+ }
+ Dot {
+  name Dot113
+  tile_color 0x8ce08ff
+  xpos -524
+  ypos 1210
+ }
+push $N275f2ad0
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode2
+  xpos -429
+  ypos 418
+ }
+ Premult {
+  name Premult19
+  xpos -429
+  ypos 454
+ }
+ Blur {
+  size {{"(parent.BlurMASTER.size /8) *2"}}
+  name Blur41
+  xpos -429
+  ypos 478
+ }
+ Unpremult {
+  name Unpremult2
+  xpos -429
+  ypos 560
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer1
+  xpos -429
+  ypos 584
+ }
+ Premult {
+  name Premult20
+  xpos -429
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur10.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur4
+  xpos -429
+  ypos 644
+ }
+ Dot {
+  name Dot114
+  tile_color 0x8ce08ff
+  xpos -395
+  ypos 1111
+ }
+push $N8b1f7170
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode4
+  xpos -297
+  ypos 418
+ }
+ Premult {
+  name Premult21
+  xpos -297
+  ypos 454
+ }
+ Blur {
+  size {{"(parent.BlurMASTER.size /8) *3"}}
+  name Blur42
+  xpos -297
+  ypos 478
+ }
+ Unpremult {
+  name Unpremult4
+  xpos -297
+  ypos 560
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer2
+  xpos -297
+  ypos 584
+ }
+ Premult {
+  name Premult22
+  xpos -297
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur4.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur5
+  xpos -297
+  ypos 644
+ }
+ Dot {
+  name Dot115
+  tile_color 0x8ce08ff
+  xpos -263
+  ypos 1060
+ }
+push $N288f73c0
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode6
+  xpos -151
+  ypos 418
+ }
+ Premult {
+  name Premult23
+  xpos -151
+  ypos 454
+ }
+ Blur {
+  size {{"(parent.BlurMASTER.size /8) *4"}}
+  name Blur44
+  xpos -151
+  ypos 478
+ }
+ Unpremult {
+  name Unpremult5
+  xpos -151
+  ypos 560
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer8
+  xpos -151
+  ypos 584
+ }
+ Premult {
+  name Premult24
+  xpos -151
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur5.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur6
+  xpos -151
+  ypos 644
+ }
+ Dot {
+  name Dot116
+  tile_color 0x8ce08ff
+  xpos -117
+  ypos 1015
+ }
+push $N31cfe220
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode7
+  xpos -15
+  ypos 418
+ }
+ Premult {
+  name Premult25
+  xpos -15
+  ypos 454
+ }
+ Blur {
+  size {{"(parent.BlurMASTER.size /8) *5"}}
+  name Blur43
+  xpos -15
+  ypos 478
+ }
+ Unpremult {
+  name Unpremult6
+  xpos -15
+  ypos 560
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer9
+  xpos -15
+  ypos 584
+ }
+ Premult {
+  name Premult26
+  xpos -15
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur6.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur7
+  xpos -15
+  ypos 644
+ }
+ Dot {
+  name Dot117
+  tile_color 0x8ce08ff
+  xpos 19
+  ypos 953
+ }
+push $N27694f80
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode8
+  xpos 139
+  ypos 418
+ }
+ Premult {
+  name Premult27
+  xpos 139
+  ypos 454
+ }
+ Blur {
+  size {{"(parent.BlurMASTER.size /8) *6"}}
+  name Blur47
+  xpos 139
+  ypos 478
+ }
+ Unpremult {
+  name Unpremult7
+  xpos 139
+  ypos 560
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer10
+  xpos 139
+  ypos 584
+ }
+ Premult {
+  name Premult28
+  xpos 139
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur7.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur8
+  xpos 139
+  ypos 644
+ }
+ Dot {
+  name Dot118
+  tile_color 0x8ce08ff
+  xpos 173
+  ypos 900
+ }
+push $N31d29aa0
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode9
+  xpos 284
+  ypos 414
+ }
+ Premult {
+  name Premult29
+  xpos 284
+  ypos 454
+ }
+ Blur {
+  size {{"(parent.BlurMASTER.size /8) *7"}}
+  name Blur45
+  selected true
+  xpos 284
+  ypos 478
+ }
+ Unpremult {
+  name Unpremult8
+  xpos 284
+  ypos 561
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer11
+  xpos 284
+  ypos 580
+ }
+ Premult {
+  name Premult30
+  xpos 284
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur8.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur9
+  xpos 284
+  ypos 644
+ }
+ Dot {
+  name Dot119
+  tile_color 0x8ce08ff
+  xpos 318
+  ypos 822
+ }
+push $N31d3bf00
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode10
+  xpos 419
+  ypos 418
+ }
+ Premult {
+  name Premult33
+  xpos 419
+  ypos 454
+ }
+ Blur {
+  size {{parent.ExtendSize}}
+  name BlurMASTER
+  note_font_size 15
+  note_font_color 0xffffffff
+  xpos 419
+  ypos 477
+ }
+ Unpremult {
+  name Unpremult10
+  xpos 419
+  ypos 560
+ }
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer13
+  xpos 419
+  ypos 584
+ }
+ Premult {
+  name Premult34
+  xpos 419
+  ypos 620
+ }
+ EdgeBlur {
+  size {{"parent.EdgeBlur9.size * SmoothProgressif_Multiplier"}}
+  name EdgeBlur11
+  xpos 419
+  ypos 644
+ }
+ Dot {
+  name Dot120
+  tile_color 0x8ce08ff
+  xpos 453
+  ypos 747
+ }
+push $N24ebb890
+ Erode {
+  size {{parent.ZoneMatiere}}
+  name Erode5
+  xpos 555
+  ypos 416
+ }
+ Premult {
+  name Premult35
+  xpos 555
+  ypos 452
+ }
+ Blur {
+  size {{"parent.BlurMASTER.size *1.5"}}
+  name Blur46
+  xpos 555
+  ypos 483
+ }
+ Unpremult {
+  name Unpremult3
+  xpos 555
+  ypos 559
+ }
+ Merge2 {
+  inputs 2
+  name Merge25
+  xpos 555
+  ypos 744
+ }
+ Merge2 {
+  inputs 2
+  name Merge23
+  xpos 555
+  ypos 819
+ }
+ Merge2 {
+  inputs 2
+  name Merge22
+  xpos 555
+  ypos 897
+ }
+ Merge2 {
+  inputs 2
+  name Merge21
+  xpos 555
+  ypos 950
+ }
+ Merge2 {
+  inputs 2
+  name Merge20
+  xpos 555
+  ypos 1012
+ }
+ Merge2 {
+  inputs 2
+  name Merge19
+  xpos 555
+  ypos 1057
+ }
+ Merge2 {
+  inputs 2
+  name Merge18
+  xpos 555
+  ypos 1108
+ }
+ Merge2 {
+  inputs 2
+  name Merge24
+  xpos 555
+  ypos 1207
+ }
+ Merge2 {
+  inputs 2
+  name Merge17
+  xpos 555
+  ypos 1316
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy4
+  xpos 555
+  ypos 1495
+ }
+push $N276ce6e0
+ Dot {
+  name Dot3
+  tile_color 0x8ce08ff
+  xpos 975
+  ypos 354
+ }
+ Dot {
+  name Dot4
+  tile_color 0x8ce08ff
+  xpos 975
+  ypos 1614
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  bbox B
+  name Merge1
+  label "mix :\[value mix]"
+  xpos 555
+  ypos 1606
+ }
+ Output {
+  name Output1
+  xpos 555
+  ypos 1701
+ }
+end_group
+
