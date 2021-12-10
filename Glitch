@@ -1,0 +1,495 @@
+set cut_paste_input [stack 0]
+version 11.3 v2
+BackdropNode {
+ inputs 0
+ name "Glitch FX"
+ tile_color 0x87854701
+ gl_color 0x87854701
+ label "Glitch FX"
+ note_font "Arial Black"
+ note_font_size 35
+ selected true
+ xpos 5716
+ ypos 362
+ bdwidth 1632
+ bdheight 2222
+}
+Noise {
+ inputs 0
+ size {2550 334}
+ zoffset {{frame/(18*(1/parent.Glitch_Control.large_wobble_speed))}}
+ gain 0.585
+ gamma 0.815
+ translate {{"random((frame+8.4)/(1/parent.Glitch_Control.large_wobble_speed)) * (1280.0--30.0) + -30.0"} 2.500180842}
+ center {1024 778}
+ name Noise4
+ selected true
+ xpos 5901
+ ypos 2165
+}
+CheckerBoard2 {
+ inputs 0
+ format "6016 3384 0 0 6016 3384 1 "
+ boxsize {{parent.Glitch_Control.big_line_size.w} {parent.Glitch_Control.big_line_size.h}}
+ color0 {0.1 0.1000000015 0.1000000015 1}
+ centerlinewidth 0
+ name CheckerBoard2
+ selected true
+ xpos 7134
+ ypos 395
+}
+set Nc886e10 [stack 0]
+Transform {
+ translate {-1180 -110}
+ scale {3.400000095 2.278000116}
+ center {960 540}
+ name Transform4
+ selected true
+ xpos 6980
+ ypos 473
+}
+CameraShake3 {
+ name CameraShake3_1
+ label "\[value amplitude] px at \[value frequency]"
+ selected true
+ xpos 6981
+ ypos 502
+ amplitude {2850 385}
+ scaling 0.151
+ frequency {{10*parent.Glitch_Control.line_speed}}
+ cs_center {{"\[value input.width 0]/2"} {"\[value input.height 0]/2"}}
+ motionblur 0
+}
+push $Nc886e10
+Transform {
+ translate {0 -30}
+ scale {1.2 1.2}
+ center {3008 1692}
+ name Transform3
+ selected true
+ xpos 7249
+ ypos 479
+}
+CameraShake3 {
+ name CameraShake3_3
+ label "\[value amplitude] px at \[value frequency]"
+ selected true
+ xpos 7249
+ ypos 503
+ amplitude {850 2985}
+ scaling 0.185
+ frequency {{.61*parent.Glitch_Control.line_speed}}
+ seed 15666
+ cs_center {{"\[value input.width 0]/2"} {"\[value input.height 0]/2"}}
+ motionblur 0
+}
+push $Nc886e10
+Transform {
+ scale 4.2
+ center {3008 1692}
+ name Transform5
+ selected true
+ xpos 7134
+ ypos 467
+}
+CameraShake3 {
+ name CameraShake3_2
+ label "\[value amplitude] px at \[value frequency]"
+ selected true
+ xpos 7134
+ ypos 499
+ amplitude {2850 385}
+ scaling 0.185
+ frequency {{10*parent.Glitch_Control.line_speed}}
+ seed 9657
+ cs_center {{"\[value input.width 0]/2"} {"\[value input.height 0]/2"}}
+ motionblur 0
+}
+Merge2 {
+ inputs 2
+ operation max
+ name Merge5
+ selected true
+ xpos 7134
+ ypos 568
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge12
+ selected true
+ xpos 7134
+ ypos 623
+}
+ColorCorrect {
+ contrast 10
+ gamma 0.225
+ gain 26
+ name ColorCorrect2
+ selected true
+ xpos 7134
+ ypos 659
+}
+Clamp {
+ name Clamp1
+ selected true
+ xpos 7134
+ ypos 683
+}
+Keyer {
+ operation "luminance key"
+ name Keyer3
+ selected true
+ xpos 7134
+ ypos 719
+}
+Blur {
+ size {806.4 6.4}
+ name Blur1
+ selected true
+ xpos 7134
+ ypos 755
+}
+Reformat {
+ name Reformat1
+ selected true
+ xpos 7134
+ ypos 796
+}
+Grade {
+ channels rgba
+ white 1.54
+ black_clamp false
+ name Grade67
+ selected true
+ xpos 6822
+ ypos 796
+}
+push 0
+Reformat {
+ name Reformat4
+ selected true
+ xpos 6694
+ ypos 745
+}
+Merge2 {
+ inputs 2
+ name Merge18
+ selected true
+ xpos 6694
+ ypos 796
+}
+set Nee54b80 [stack 0]
+Dot {
+ name Dot118
+ selected true
+ xpos 6728
+ ypos 1394
+}
+push $Nee54b80
+Constant {
+ inputs 0
+ channels rgb
+ name Constant3
+ selected true
+ xpos 7148
+ ypos 947
+}
+set Nee69f20 [stack 0]
+Noise {
+ size {460 14}
+ gain 1
+ gamma 1
+ translate {{"random((frame+8.4)/(1*(1/parent.Glitch_Control.small_noise_speed))) * (1280.0--30.0) + -30.0"} 2.500180842}
+ scale {{4.1*parent.Glitch_Control.small_noise_scale}}
+ center {1024 778}
+ name Noise2
+ selected true
+ xpos 6951
+ ypos 1098
+}
+push $Nee69f20
+Noise {
+ size {350 9}
+ gain 1
+ gamma 1
+ translate {{"random((frame+8.4)/(1*(1/parent.Glitch_Control.small_noise_speed))) * (1280.0--30.0) + -30.0"} 2.500180842}
+ scale {{parent.Glitch_Control.small_noise_scale}}
+ center {1024 778}
+ name Noise1
+ selected true
+ xpos 7148
+ ypos 1096
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge17
+ selected true
+ xpos 7148
+ ypos 1233
+}
+Blur {
+ size 4.2
+ name Blur3
+ selected true
+ xpos 6911
+ ypos 1227
+}
+Grade {
+ channels rgba
+ multiply {{1/parent.Grade67.white}}
+ black_clamp false
+ name Grade68
+ selected true
+ xpos 6804
+ ypos 1233
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge15
+ selected true
+ xpos 6694
+ ypos 1233
+}
+push $cut_paste_input
+Dot {
+ name Dot14
+ selected true
+ xpos 6154
+ ypos 1098
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 forward.u
+ name Copy2
+ selected true
+ xpos 6120
+ ypos 1227
+}
+Dot {
+ name Dot15
+ selected true
+ xpos 6154
+ ypos 1290
+}
+set N111762d0 [stack 0]
+IDistort {
+ channels rgba
+ uv forward
+ uv_scale {{parent.Glitch_Control.small_noise_strenth*parent.Glitch_Control.globalstrenth}}
+ name IDistort1
+ selected true
+ xpos 6120
+ ypos 1321
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 forward.u
+ name Copy8
+ selected true
+ xpos 6120
+ ypos 1385
+}
+IDistort {
+ uv forward
+ uv_scale {{parent.Glitch_Control.hard_line_strenth}}
+ name IDistort2
+ selected true
+ xpos 6120
+ ypos 1430
+}
+Shuffle {
+ alpha white
+ name Shuffle3
+ label "\[value in] to \[value out]"
+ selected true
+ xpos 6120
+ ypos 1528
+}
+set N111a0020 [stack 0]
+push $N111762d0
+Dot {
+ name Dot16
+ selected true
+ xpos 6425
+ ypos 1290
+}
+Difference {
+ inputs 2
+ gain 299
+ name Difference2
+ selected true
+ xpos 6391
+ ypos 1528
+}
+Dot {
+ name Dot17
+ selected true
+ xpos 6425
+ ypos 2024
+}
+push $N111a0020
+Dot {
+ name Dot18
+ selected true
+ xpos 6154
+ ypos 1664
+}
+set N111c2af0 [stack 0]
+Shuffle {
+ red black
+ blue black
+ name Shuffle6
+ label "\[value in] to \[value out]"
+ selected true
+ xpos 6234
+ ypos 1749
+}
+Transform {
+ translate {1 0}
+ center {960 540}
+ name Transform8
+ selected true
+ xpos 6234
+ ypos 1785
+}
+push 0
+push $N111c2af0
+Shuffle {
+ red black
+ green black
+ name Shuffle7
+ label "\[value in] to \[value out]"
+ selected true
+ xpos 5995
+ ypos 1744
+}
+Transform {
+ translate {-1 0}
+ center {960 540}
+ name Transform6
+ selected true
+ xpos 5995
+ ypos 1780
+}
+push $N111c2af0
+Shuffle {
+ green black
+ blue black
+ name Shuffle13
+ label "\[value in] to \[value out]"
+ selected true
+ xpos 6120
+ ypos 1747
+}
+Transform {
+ translate {2 0}
+ center {960 540}
+ name Transform10
+ selected true
+ xpos 6120
+ ypos 1783
+}
+Merge2 {
+ inputs 3+1
+ operation plus
+ name Merge28
+ selected true
+ xpos 6120
+ ypos 1885
+}
+push $N111a0020
+Dot {
+ name Dot19
+ selected true
+ xpos 5835
+ ypos 1537
+}
+Dot {
+ name Dot20
+ selected true
+ xpos 5835
+ ypos 2024
+}
+Merge2 {
+ inputs 2+1
+ mix {{"clamp (parent.Glitch_Control.globalstrenth)"}}
+ name Merge26
+ selected true
+ xpos 6120
+ ypos 2021
+}
+Dot {
+ name Dot21
+ selected true
+ xpos 6154
+ ypos 2075
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 forward.u
+ name Copy1
+ selected true
+ xpos 6120
+ ypos 2159
+}
+IDistort {
+ channels rgba
+ uv forward
+ uv_scale {{(parent.Glitch_Control.large_wobble_strength)*parent.Glitch_Control.globalstrenth}}
+ name IDistort3
+ selected true
+ xpos 6120
+ ypos 2195
+}
+Grain2 {
+ name Grain2_1
+ label "Kodak 5248"
+ selected true
+ xpos 6120
+ ypos 2313
+ red_size 5.4
+ green_size 3.2
+ blue_size 3.8
+ red_m {{parent.Glitch_Control.grain_strenth*parent.Glitch_Control.globalstrenth}}
+ green_m {{parent.Glitch_Control.grain_strenth*parent.Glitch_Control.globalstrenth}}
+ blue_m {{parent.Glitch_Control.grain_strenth*parent.Glitch_Control.globalstrenth}}
+ black {0 0 0}
+ minimum {0 0 0}
+}
+NoOp {
+ inputs 0
+ name Glitch_Control
+ tile_color 0x14ffb8ff
+ gl_color 0x7a2a2aff
+ note_font_size 31
+ selected true
+ xpos 6601
+ ypos 2325
+ addUserKnob {20 User}
+ addUserKnob {7 globalstrenth l "global strenth" R 0 2}
+ globalstrenth 1.59
+ addUserKnob {7 grain_strenth l "grain strenth"}
+ grain_strenth 0.27
+ addUserKnob {7 small_noise_scale l "small noise scale" R 0 10}
+ small_noise_scale 5.85
+ addUserKnob {7 small_noise_speed l "small noise speed" R 0 10}
+ small_noise_speed 1
+ addUserKnob {7 small_noise_strenth l "small noise strenth" R 0 200}
+ small_noise_strenth 22
+ addUserKnob {7 large_wobble_speed l "large wobble speed" R 0 10}
+ large_wobble_speed 4.9
+ addUserKnob {7 large_wobble_strength l "large wobble strength" R 0 60}
+ large_wobble_strength 20
+ addUserKnob {7 hard_line_strenth l "hard line strenth" R 0 100}
+ hard_line_strenth 66
+ addUserKnob {7 line_speed l "line speed" R 0 10}
+ line_speed 2.45
+ addUserKnob {14 big_line_size l "big line size" R 0 100}
+ big_line_size {900 180}
+}
