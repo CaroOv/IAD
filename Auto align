@@ -1,0 +1,83 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name AutoAlign1
+ knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"uniform_scale\":\n    if n\[\"uniform_scale\"].getValue():\n        n\[\"uniform_scale_settings\"].clearFlag(nuke.DISABLED)\n    else:\n        n\[\"uniform_scale_settings\"].setFlag(nuke.DISABLED)"
+ tile_color 0x628a00ff
+ selected true
+ xpos 1717
+ ypos 1732
+ addUserKnob {20 Align l AutoAlign}
+ addUserKnob {3 inputframe l INVISIBLE +INVISIBLE}
+ addUserKnob {26 ASTT l "Align Source to Target"}
+ addUserKnob {22 AlignBtn l "Add Key" T "grp = nuke.thisGroup()\n\nuniform_scale = grp\[\"uniform_scale\"].getValue()\nuniform_scale_settings = int(grp\[\"uniform_scale_settings\"].getValue())\n\nmaxPanels_default = nuke.toNode(\"preferences\")\[\"maxPanels\"].getValue()\n\ntry:\n  nuke.toNode(\"preferences\")\[\"maxPanels\"].setValue(10)\n\n  trsfm = grp.node('Transform_target')\n  out = grp.node('Output1')\n  mtchgrd = grp.node('MatchGrade1')\n  mtchgrd_align = mtchgrd.knob(\"alignTargetToSource\")\n\n  trsfm\['scale'].setAnimated()\n  trsfm\['translate'].setAnimated()\n  trsfm\['center'].setValue(0)\n\n  mtchgrd.showControlPanel()\n\n  kFrame = nuke.frame()\n\n  nuke.frame(kFrame)\n  mtchgrd_align.execute()\n\n  if grp.node('Transform1'):    \n\t  trsfm_temp = grp.node('Transform1')\n\t  rfrmt_temp = grp.node('Reformat1')\n\n\t  m = trsfm_temp\['translate'].getValue()\n\t  n = trsfm_temp\['scale'].getValue()\n\t  mx = float(m\[0])\n\t  my = float(m\[1])\n\t  nw = float(n\[0])\n\t  nh = float(n\[1])\n\n\t  if uniform_scale:\n\t    if uniform_scale_settings == 0:\n\t      n_average = (nw+nh)/2\n\t      nw = n_average\n\t      nh = n_average\n\t    elif uniform_scale_settings == 1:\n\t      nh = nw\n\t    else:\n\t      nw = nh\n\n\t  trsfm\['translate'].setValueAt( mx, kFrame, 0 )\n\t  trsfm\['translate'].setValueAt( my, kFrame, 1 )\n\t  trsfm\['scale'].setValueAt( nw, kFrame, 0 )\n\t  trsfm\['scale'].setValueAt( nh, kFrame, 1 )\n\n\t  #Delete node crees\n\t  grp.begin()\n\t  for n in (trsfm_temp, rfrmt_temp):\n\t      nuke.delete(n)\n\t  grp.end()\n\n  out.setInput(0,trsfm)\nexcept:\n  pass\ngrp.end()\nmtchgrd.hideControlPanel()\nnuke.toNode(\"preferences\")\[\"maxPanels\"].setValue(maxPanels_default)\ngrp.showControlPanel()" +STARTLINE}
+ addUserKnob {6 uniform_scale l "uniform scale" -STARTLINE}
+ uniform_scale true
+ addUserKnob {4 uniform_scale_settings l "" -STARTLINE M {average width height "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {22 export l "Export Transform" T "try:\n    thisnode = nuke.thisNode()\n    thisnode.begin()\n    \[i\['selected'].setValue(False) for i in nuke.selectedNodes()]\n    nuke.toNode('Transform_target')\['selected'].setValue(True)\n    nuke.nodeCopy('%clipboard%')\n    thisnode.end()\n    \[i\['selected'].setValue(False) for i in nuke.selectedNodes()]\n    nuke.nodePaste('%clipboard%')\nexcept:\n    nuke.root().begin()" +STARTLINE}
+ addUserKnob {6 gang l INVISIBLE -STARTLINE +INVISIBLE}
+ addUserKnob {20 transform l Transform n 1}
+ addUserKnob {41 matrix T Transform_target.matrix}
+ addUserKnob {41 translate T Transform_target.translate}
+ addUserKnob {41 rotate T Transform_target.rotate}
+ addUserKnob {41 scale T Transform_target.scale}
+ addUserKnob {41 skewX l "skew X" T Transform_target.skewX}
+ addUserKnob {41 skewY l "skew Y" T Transform_target.skewY}
+ addUserKnob {41 skew_order l "skew order" T Transform_target.skew_order}
+ addUserKnob {41 center T Transform_target.center}
+ addUserKnob {41 invert_matrix l invert T Transform_target.invert_matrix}
+ addUserKnob {41 filter T Transform_target.filter}
+ addUserKnob {41 clamp T Transform_target.clamp}
+ addUserKnob {41 black_outside l "black outside" T Transform_target.black_outside}
+ addUserKnob {41 motionblur T Transform_target.motionblur}
+ addUserKnob {41 shutter T Transform_target.shutter}
+ addUserKnob {41 shutteroffset l "shutter offset" T Transform_target.shutteroffset}
+ addUserKnob {41 shuttercustomoffset l "" -STARTLINE T Transform_target.shuttercustomoffset}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 version l "" +STARTLINE T "<p style=\"color:grey\">AutoAlign - v1.1 - 2019</p>"}
+}
+ Input {
+  inputs 0
+  name source
+  xpos 0
+  ypos 8
+ }
+ Dot {
+  name Dot1
+  xpos 34
+  ypos 120
+ }
+set N12092e20 [stack 0]
+ Transform {
+  name Transform_target
+  xpos 0
+  ypos 168
+ }
+ Output {
+  name Output1
+  xpos 0
+  ypos 261
+ }
+push $N12092e20
+ Input {
+  inputs 0
+  name target
+  xpos 288
+  ypos 8
+  number 1
+ }
+ MatchGrade {
+  inputs 2
+  serializeKnob "0 0 0 0 0 0 1 1 1 0 18446744073709551615 18446744073709551615"
+  boxWidth 4096
+  boxHeight 2160
+  scale {1.020420909 1.020679474}
+  translation {-0.6828448772 81.13610077}
+  name MatchGrade1
+  selected true
+  xpos 288
+  ypos 112
+ }
+end_group
