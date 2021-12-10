@@ -1,0 +1,375 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name Impact1
+ tile_color 0xe5a800ff
+ selected true
+ xpos 3547
+ ypos 1887
+ addUserKnob {20 User l Impact}
+ addUserKnob {4 ROption l "render options" M {"Multi Scanline" "Vector Blur" "No MBlur"}}
+ addUserKnob {41 time_offset_1 l "start frame" T TimeOffset1.time_offset}
+ addUserKnob {41 particule_amount l amount T amount_controler.particule_amount}
+ addUserKnob {41 lifetime l "particule life" T SparkEmit.lifetime}
+ addUserKnob {26 ""}
+ addUserKnob {41 scale_camera l "scene scaling" T scale.scale_camera}
+ addUserKnob {41 position T anchor_controler.translate}
+ addUserKnob {41 strength l orientation T ParticleDirectionalForce1.strength}
+ addUserKnob {41 size l "particule size" T SparkEmit.size}
+ addUserKnob {26 ""}
+ addUserKnob {41 white_3 l "birth color" T color_source1.white}
+ addUserKnob {41 white_2 l "death color" T color_end1.white}
+ addUserKnob {41 speed_1 l "color transition speed" T NoOp1.speed}
+ addUserKnob {41 Softness T softness.Softness}
+ addUserKnob {26 ""}
+ addUserKnob {41 format l "output format" T Reformat1.format}
+ addUserKnob {41 Overscan T Reformat1.Overscan}
+ addUserKnob {41 time_offset l Seed T softness.time_offset}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode9
+  tile_color 0x557fffff
+  label "Cheap Sparks setup"
+  note_font "Bitstream Vera Sans"
+  note_font_size 420
+  xpos 209
+  ypos -499
+  bdwidth 2126
+  bdheight 1580
+ }
+ NoOp {
+  inputs 0
+  name amount_controler
+  tile_color 0xff00ffff
+  xpos 865
+  ypos 187
+  addUserKnob {20 User}
+  addUserKnob {7 particule_amount l amount R 0 10}
+  particule_amount 1
+ }
+ NoOp {
+  inputs 0
+  name softness
+  tile_color 0xff00ffff
+  xpos 865
+  ypos 244
+  addUserKnob {20 User}
+  addUserKnob {7 Softness R 0 100}
+  Softness 30
+  addUserKnob {3 time_offset l Seed}
+  time_offset 20
+ }
+ NoOp {
+  inputs 0
+  name scale
+  tile_color 0xff00ffff
+  xpos 865
+  ypos 311
+  addUserKnob {20 User}
+  addUserKnob {7 scale_camera l scale R 1 1000}
+  scale_camera 2
+ }
+ Input {
+  inputs 0
+  name cam
+  xpos 425
+  ypos 382
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos 459
+  ypos 467
+ }
+ Camera2 {
+  inputs 0
+  translate {0 0 {2500*1/(max(1,parent.scale.scale_camera))}}
+  focal 20
+  haperture 23.80857905
+  vaperture 13.47998421
+  near 1
+  far 8000000
+  name DefaultCam
+  xpos 666
+  ypos 221
+ }
+ Switch {
+  inputs 2
+  which {{"\[exists parent.input0]"}}
+  name Switch1
+  xpos 655
+  ypos 467
+ }
+ Dot {
+  name Dot48
+  xpos 690
+  ypos 556
+ }
+set Nc69d9d0 [stack 0]
+ ColorWheel {
+  inputs 0
+  format "256 256 0 0 256 256 1 square_256"
+  gamma 0.45
+  name ColorWheel2
+  xpos 857
+  ypos -266
+ }
+ Saturation {
+  saturation 0
+  mode Maximum
+  name Saturation2
+  xpos 857
+  ypos -129
+ }
+ FilterErode {
+  channels all
+  size {{abs(parent.softness.Softness)}}
+  filter gaussian
+  name ErodeSoft
+  xpos 857
+  ypos -79
+ }
+ Dot {
+  name Dot1
+  xpos 515
+  ypos -74
+ }
+ Reformat {
+  type scale
+  scale 0.125
+  resize distort
+  black_outside true
+  name Reformat2
+  xpos 481
+  ypos -11
+ }
+set Nc7a4280 [stack 0]
+ Grade {
+  white {1 0.1 0 1}
+  name color_end1
+  tile_color 0xff00ffff
+  xpos 611
+  ypos -11
+ }
+push $Nc7a4280
+ Grade {
+  white {1.2 0.7 0.3 1}
+  name color_source1
+  tile_color 0xff00ffff
+  xpos 351
+  ypos -11
+ }
+ Dissolve {
+  inputs 2
+  which {{curve x1 0 x100 1}}
+  name Dissolve1
+  xpos 475
+  ypos 26
+ }
+ Retime {
+  input.first_lock true
+  input.last_lock true
+  output.last -2147483648
+  speed {{10*NoOp1.speed}}
+  time ""
+  name Retime1
+  xpos 475
+  ypos 97
+ }
+ Input {
+  inputs 0
+  name axis
+  xpos 1532
+  ypos -96
+ }
+ Dot {
+  name Dot2
+  xpos 1566
+  ypos -11
+ }
+ Noise {
+  inputs 0
+  size 750
+  zoffset {{frame/5+softness.time_offset}}
+  octaves 6
+  lacunarity 1.45
+  gain 0.6
+  center {1440 810}
+  name Noise6
+  xpos 1204
+  ypos -181
+ }
+ Sphere {
+  name Sphere1
+  xpos 1204
+  ypos -96
+ }
+ TransformGeo {
+  inputs 2
+  name TransformGeo1
+  xpos 1205
+  ypos -11
+  disable {{"!\[exists parent.input1]"}}
+ }
+push 0
+ ParticleEmitter {
+  inputs 3
+  emit_from faces
+  randomize_type "randomized direction"
+  rate {{curve*amount_controler.particule_amount L 100 0}}
+  rate_variation 0.3
+  rate_channel rgba.red
+  lifetime_variation 0.5
+  halflife 20
+  velocity 10
+  velocity_variation 2
+  size 1
+  size_variation 1.6
+  mass 4.5
+  mass_variation 0.055
+  transfer_window 0
+  spread 0.1
+  color {0.9 1.35 0.085 1}
+  seed {{softness.time_offset}}
+  name SparkEmit
+  tile_color 0xff00ffff
+  xpos 1205
+  ypos 74
+ }
+ ParticleDirectionalForce {
+  strength {20 20 0}
+  max_age {{1/(max(1,parent.SparkEmit.lifetime*1.25))}}
+  name ParticleDirectionalForce1
+  tile_color 0xff00ffff
+  xpos 1205
+  ypos 152
+ }
+ ParticleDrag {
+  drag 0.6
+  name ParticleDrag1
+  xpos 1205
+  ypos 216
+ }
+ ParticleTurbulence {
+  strength {2 0.85 4}
+  scale {5 10 20}
+  name ParticleTurbulence1
+  xpos 1205
+  ypos 272
+ }
+ ParticleDrag {
+  drag 0.1
+  name ParticleDrag2
+  xpos 1204
+  ypos 324
+ }
+ ParticleGravity {
+  to {0 -3 0}
+  min_age 0.1
+  name ParticleGravity1
+  xpos 1204
+  ypos 409
+ }
+set Na6d9ca80 [stack 0]
+ Reformat {
+  inputs 0
+  format "4096 2160 0 0 4096 2160 1 4K_DCP"
+  resize none
+  name Reformat1
+  xpos 1725
+  ypos 324
+  addUserKnob {20 User}
+  addUserKnob {14 Overscan R 0 100}
+  Overscan 500
+ }
+ Dot {
+  name Dot4
+  xpos 1759
+  ypos 415
+ }
+set Na6ce7ec0 [stack 0]
+ ScanlineRender {
+  inputs 3
+  conservative_shader_sampling false
+  antialiasing high
+  overscan {{parent.Reformat1.Overscan}}
+  spatial_jitter 0.1
+  motion_vectors_type velocity
+  name SoloSampleRender
+  xpos 1433
+  ypos 414
+ }
+set Na72dd540 [stack 0]
+push $Na72dd540
+ VectorBlur2 {
+  channels rgba
+  uv forward
+  alpha -rgba.alpha
+  scale 0.5
+  motion_falloff 0.65
+  offset 0
+  grow_bbox 40
+  normalize false
+  name MBlur
+  xpos 1433
+  ypos 636
+ }
+push $Nc69d9d0
+push $Na6d9ca80
+push $Na6ce7ec0
+ Dot {
+  name Dot5
+  xpos 1756
+  ypos 556
+ }
+ ScanlineRender {
+  inputs 3
+  conservative_shader_sampling false
+  antialiasing high
+  overscan {{parent.Reformat1.Overscan}}
+  samples 30
+  spatial_jitter 0.025
+  motion_vectors_type velocity
+  name MultiSampleRender
+  xpos 1204
+  ypos 556
+ }
+ Switch {
+  inputs 3
+  which {{ROption}}
+  name Switch2
+  xpos 1204
+  ypos 641
+ }
+ Transform {
+  center {{format.w/2 x51 0} {format.h/2 x51 0}}
+  name anchor_controler
+  tile_color 0xff00ffff
+  xpos 1204
+  ypos 754
+ }
+ TimeOffset {
+  time_offset 1
+  time ""
+  name TimeOffset1
+  tile_color 0xff00ffff
+  xpos 1204
+  ypos 823
+ }
+ Output {
+  name Output1
+  xpos 1204
+  ypos 924
+ }
+ NoOp {
+  inputs 0
+  name NoOp1
+  xpos 316
+  ypos 101
+  addUserKnob {20 User}
+  addUserKnob {7 speed l "color transition speed" R 0.1 5}
+  speed 2
+ }
+end_group
