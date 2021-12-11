@@ -1,0 +1,155 @@
+set cut_paste_input [stack 0]
+version 8.0 v5
+push $cut_paste_input
+Group {
+ name Fenglow2
+ help "FengGlow is a flexible diffuse glow to stylize your images in a beauty look.\nDesigned by Feng-Guo Tang and Christoph Hasche.\n\nUse the mask input to behold sharpness in areas like eyes or fine details."
+ selected true
+ xpos 938
+ ypos 5044
+ lock_connections true
+ addUserKnob {20 Adjustmens l FengGlow t "FengGlow is a flexible diffuse glow to stylize your images in a beauty look"}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 "" l "mask input" t "Use the mask input to bring back some sharpness to areas like eyes or fine details"}
+ addUserKnob {41 maskChannelMask l Mask T Merge1.maskChannelMask}
+ addUserKnob {41 blur l "feather mask" t "Blur the mask input" T featherMask.size}
+ addUserKnob {41 filter T featherMask.filter}
+ addUserKnob {26 ""}
+ addUserKnob {41 blur1size l "blur value 1" t "Blur value 1" T Blur1.size}
+ addUserKnob {41 blur1filter l filter T Blur1.filter}
+ addUserKnob {41 blur1quality l "" t "Blur value 1 quality" -STARTLINE T Blur1.quality}
+ addUserKnob {41 blur2size l "blur value 2" t "Blur value 1" T Blur2.size}
+ addUserKnob {41 blur2filter l filter T Blur2.filter}
+ addUserKnob {41 blur2quality l "" t "Blur value 2 quality" -STARTLINE T Blur2.quality}
+ addUserKnob {26 ""}
+ addUserKnob {41 multiply l "tint image" t "Set color to tint the image" T LowColor.multiply}
+ addUserKnob {26 ""}
+ addUserKnob {41 blackpoint T LowColor.blackpoint}
+ addUserKnob {41 whitepoint T LowColor.whitepoint}
+ addUserKnob {41 mix l "high value" t "Set the values for highlights" T Screen.mix}
+ addUserKnob {41 mix_1 l "low value" t "Set the value for shadows" T Overlay.mix}
+ addUserKnob {26 ""}
+ addUserKnob {26 "" l FengGlow t "FengGlow v1.0 by Christoph Hasche and Feng-Guo Tang" T v1.0}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos 192
+  ypos -135
+  number 1
+ }
+set N27247780 [stack 0]
+ Blur {
+  size 2
+  name featherMask
+  xpos -45
+  ypos 116
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -735
+  ypos 139
+ }
+set N99df3250 [stack 0]
+ Shuffle {
+  name ShuffleInput
+  xpos -367
+  ypos -167
+ }
+set N99df35c0 [stack 0]
+ Blur {
+  size 2
+  name Blur1
+  xpos -141
+  ypos -27
+ }
+ Grade {
+  whitepoint 0.75
+  multiply {1 0.9666666389 0.8000000119 1}
+  reverse true
+  name LowColor
+  xpos -184
+  ypos 48
+ }
+push $N99df35c0
+ Blur {
+  size 20
+  maskChannelMask rgba.red
+  name Blur2
+  xpos -255
+  ypos -15
+ }
+push $N99df35c0
+ Merge2 {
+  inputs 2
+  operation screen
+  mix 0.2
+  name Screen
+  xpos -313
+  ypos 63
+ }
+ Merge2 {
+  inputs 2
+  operation overlay
+  mix 0.25
+  name Overlay
+  xpos -246
+  ypos 98
+ }
+push $N99df3250
+ Merge2 {
+  inputs 2+1
+  operation matte
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  maskChannelMask -rgba.red
+  name Merge1
+  xpos -269
+  ypos 270
+ }
+set N99df4a60 [stack 0]
+ Output {
+  name Output1
+  xpos -283
+  ypos 353
+ }
+push $N27247780
+ Invert {
+  name InvertMask
+  xpos 48
+  ypos -105
+  disable true
+ }
+push $N27247780
+ Constant {
+  inputs 0
+  channels rgb
+  name Constant1
+  xpos 316
+  ypos 75
+ }
+ Switch {
+  inputs 2
+  which 1
+  name Switch1
+  xpos 192
+  ypos 98
+ }
+ ShuffleCopy {
+  inputs 0
+  alpha red
+  name ShuffleCopy1
+  xpos -179
+  ypos 132
+  disable {{1-parent.Mask.main i x104 1}}
+ }
+push $N99df4a60
+ Viewer {
+  viewerProcess None
+  input_process false
+  name Viewer1
+  selected true
+  xpos -735
+  ypos 165
+ }
+end_group
