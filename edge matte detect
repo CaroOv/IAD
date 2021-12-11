@@ -1,0 +1,91 @@
+set cut_paste_input [stack 0]
+version 10.0 v6
+push $cut_paste_input
+Group {
+name Edge_Matte_Detect1
+tile_color 0x7ef48aff
+selected true
+xpos 1104
+ypos 708
+addUserKnob {20 User}
+addUserKnob {41 size l Out T Dilate_Out.size}
+addUserKnob {41 size_2 l "Blur Out" T Blur_Out.size}
+addUserKnob {41 translate_1 l "translate Out" T Transform2.translate}
+addUserKnob {26 ""}
+addUserKnob {41 size_1 l In T Dilate_In.size}
+addUserKnob {41 size_3 l "Blur In" T Blur_In.size}
+addUserKnob {41 translate l "translate In" T Transform1.translate}
+addUserKnob {26 ""}
+addUserKnob {41 white l gain T Grade17.white}
+addUserKnob {41 gamma T Grade17.gamma}
+addUserKnob {26 ""}
+}
+Input {
+inputs 0
+name Input1
+xpos 415
+ypos 449
+}
+set N58abe620 [stack 0]
+Dilate {
+size -2
+name Dilate_In
+xpos 537
+ypos 513
+}
+Blur {
+size 6
+name Blur_In
+xpos 537
+ypos 563
+}
+Transform {
+center {1024 540}
+name Transform1
+xpos 537
+ypos 629
+}
+push $N58abe620
+Dilate {
+name Dilate_Out
+xpos 411
+ypos 508
+}
+Blur {
+name Blur_Out
+xpos 415
+ypos 559
+}
+Transform {
+center {1024 540}
+name Transform2
+selected true
+xpos 415
+ypos 597
+}
+Merge2 {
+inputs 2
+operation stencil
+name Merge2
+xpos 415
+ypos 633
+}
+Grade {
+channels alpha
+gamma 0.55
+black_clamp false
+name Grade17
+xpos 415
+ypos 659
+}
+Output {
+name Output1
+xpos 415
+ypos 697
+}
+Output {
+name Output2
+xpos 415
+ypos 797
+}
+end_group
