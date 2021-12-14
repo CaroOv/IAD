@@ -1,0 +1,135 @@
+set cut_paste_input [stack 0]
+version 11.3 v2
+push $cut_paste_input
+Group {
+ name Shadow_mask
+ tile_color 0xff7fff
+ gl_color 0xff
+ selected true
+ xpos 148
+ ypos 83
+ addUserKnob {20 User}
+ addUserKnob {41 smooth T Blur3.size}
+ addUserKnob {41 erode T Dilate2.size}
+ addUserKnob {41 blur T Blur11.size}
+ addUserKnob {41 translate T Transform9.translate}
+ addUserKnob {41 center T Transform9.center}
+ addUserKnob {41 rotate T Transform9.rotate}
+ addUserKnob {41 scale T Transform9.scale}
+ addUserKnob {41 skewX l "skew X" T Transform9.skewX}
+ addUserKnob {41 skewY l "skew Y" T Transform9.skewY}
+ addUserKnob {41 disable_1 l Invert T Invert1.disable}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -912
+  ypos -666
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle6
+  xpos -920
+  ypos -570
+ }
+ Dot {
+  name Dot13
+  xpos -886
+  ypos -528
+ }
+ BlackOutside {
+  name BlackOutside1
+  xpos -920
+  ypos -487
+ }
+ Blur {
+  size 100
+  crop false
+  name Blur3
+  xpos -920
+  ypos -447
+ }
+ Grade {
+  channels rgba
+  white 4
+  gamma 0.01
+  white_clamp true
+  name Grade17
+  xpos -920
+  ypos -392
+ }
+ Dilate {
+  size {{parent.Blur3.size/-5}}
+  name Dilate1
+  xpos -920
+  ypos -341
+ }
+ Dot {
+  name Dot12
+  xpos -886
+  ypos -288
+ }
+ Dilate {
+  name Dilate2
+  xpos -920
+  ypos -261
+ }
+ Reformat {
+  type "to box"
+  box_width {{width}}
+  box_height {{height}}
+  box_fixed true
+  resize none
+  black_outside true
+  name Reformat3
+  xpos -920
+  ypos -191
+ }
+ Transform {
+  center {597 397}
+  name Transform9
+  xpos -920
+  ypos -113
+ }
+ Blur {
+  size 50
+  name Blur11
+  xpos -918
+  ypos -38
+ }
+ Reformat {
+  type "to box"
+  box_width {{width}}
+  box_height {{height}}
+  box_fixed true
+  resize none
+  black_outside true
+  name Reformat2
+  xpos -918
+  ypos 18
+ }
+set N3fb8280 [stack 0]
+push 0
+push $N3fb8280
+ Invert {
+  name Invert1
+  xpos -920
+  ypos 65
+  disable true
+ }
+ Output {
+  name Output1
+  xpos -920
+  ypos 155
+ }
+ Viewer {
+  inputs 3
+  input_process false
+  name Viewer1
+  xpos -616
+  ypos 55
+  hide_input true
+ }
+end_group
