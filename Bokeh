@@ -1,0 +1,635 @@
+set cut_paste_input [stack 0]
+version 11.3 v4
+Group {
+ inputs 0
+ name Bokeh_Selector4
+ selected true
+ xpos -5100
+ ypos 1143
+ postage_stamp true
+ addUserKnob {20 User}
+ addUserKnob {26 ""}
+ addUserKnob {20 Format_Output l "Output Format" n 1}
+ Format_Output 0
+ addUserKnob {41 format l "output format" T Reformat1.format}
+ addUserKnob {41 resize l "resize type" T Reformat1.resize}
+ addUserKnob {41 center -STARTLINE T Reformat1.center}
+ addUserKnob {41 flip -STARTLINE T Reformat1.flip}
+ addUserKnob {41 flop -STARTLINE T Reformat1.flop}
+ addUserKnob {41 turn -STARTLINE T Reformat1.turn}
+ addUserKnob {41 filter T Reformat1.filter}
+ addUserKnob {41 clamp -STARTLINE T Reformat1.clamp}
+ addUserKnob {41 black_outside l "black outside" -STARTLINE T Reformat1.black_outside}
+ addUserKnob {41 pbb l "preserve bounding box" -STARTLINE T Reformat1.pbb}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {22 imgButton1 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Backlight.png\" width=\"45\" height=\"45\">" T nuke.thisNode().knob('Choose_Shape').setValue(0) +STARTLINE}
+ addUserKnob {22 imgButton2 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Big-Spots.png\"width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(1)}
+ addUserKnob {22 imgButton3 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Blades.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(2)}
+ addUserKnob {22 imgButton4 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Blurry.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(3)}
+ addUserKnob {22 imgButton5 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Brown.png\" width=\"45\" height=\"45\">" T nuke.thisNode().knob('Choose_Shape').setValue(4) +STARTLINE}
+ addUserKnob {22 imgButton6 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Clean.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(5)}
+ addUserKnob {22 imgButton7 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Confusion.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(6)}
+ addUserKnob {22 imgButton8 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Disc.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(7)}
+ addUserKnob {22 imgButton9 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Ghost.png\" width=\"45\" height=\"45\">" T nuke.thisNode().knob('Choose_Shape').setValue(8) +STARTLINE}
+ addUserKnob {22 imgButton10 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Grainy.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(10)}
+ addUserKnob {22 imgButton11 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Green.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(11)}
+ addUserKnob {22 imgButton12 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Messy.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(12)}
+ addUserKnob {22 imgButton13 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Moon.png\" width=\"45\" height=\"45\">" T nuke.thisNode().knob('Choose_Shape').setValue(13) +STARTLINE}
+ addUserKnob {22 imgButton14 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Obscured.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(14)}
+ addUserKnob {22 imgButton15 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Octogon.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(15)}
+ addUserKnob {22 imgButton16 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Orb.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(16)}
+ addUserKnob {22 imgButton17 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Petagon.png\" width=\"45\" height=\"45\">" T nuke.thisNode().knob('Choose_Shape').setValue(17) +STARTLINE}
+ addUserKnob {22 imgButton18 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Plain.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(18)}
+ addUserKnob {22 imgButton19 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Refractive.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(19)}
+ addUserKnob {22 imgButton20 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Silk.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(20)}
+ addUserKnob {22 imgButton21 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Soft.png\" width=\"45\" height=\"45\">" T nuke.thisNode().knob('Choose_Shape').setValue(21) +STARTLINE}
+ addUserKnob {22 imgButton22l l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Specks.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(22)}
+ addUserKnob {22 imgButton23 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Spots.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(23)}
+ addUserKnob {22 imgButton24 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Spotty.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(24)}
+ addUserKnob {22 imgButton25 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Wave.png\" width=\"45\" height=\"45\">" T nuke.thisNode().knob('Choose_Shape').setValue(25) +STARTLINE}
+ addUserKnob {22 imgButton26 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_wet.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(26)}
+ addUserKnob {22 imgButton27 l "<img src=\"/uvfx/Library/2D/Elements/Lens_iris/Iris_Wood.png\" width=\"45\" height=\"45\">" -STARTLINE T nuke.thisNode().knob('Choose_Shape').setValue(27)}
+ addUserKnob {26 ""}
+ addUserKnob {6 _1 l "<b><font color=#AA7070>Show Bokeh Number</font><b>" +STARTLINE}
+ addUserKnob {7 Choose_Shape l SELECT t "Chose from the various Bokeh Shapes from the dropdown list" R 0 27}
+ Choose_Shape 6
+ addUserKnob {26 ""}
+ addUserKnob {41 rotate_1 l rotate T Transform1.rotate}
+ addUserKnob {41 scale T Transform1.scale}
+ addUserKnob {41 skewX l "skew X" T Transform1.skewX}
+ addUserKnob {41 skewY l "skew Y" T Transform1.skewY}
+}
+ Text2 {
+  inputs 0
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[value Switch2.which]"
+  old_message {{53}
+    }
+  old_expression_markers {{0 0}
+    }
+  box {0 0 512 100}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  center {1440 810}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{-137.5 116.5}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1440 810 0 0 1 1 0 0 0 0}
+    }
+  color {1 0 0 1}
+  name Text1
+  xpos 1156
+  ypos 237
+  disable {{"! parent.name_1"}}
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Wood.png
+  format "229 229 0 0 229 229 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read52
+  xpos 2545
+  ypos -751
+ }
+ Dot {
+  name Dot28
+  xpos 2292
+  ypos -566
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_wet.png
+  format "800 800 0 0 800 800 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read51
+  xpos 2424
+  ypos -748
+ }
+ Dot {
+  name Dot27
+  xpos 2178
+  ypos -574
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Wave.png
+  format "119 119 0 0 119 119 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read41
+  xpos 2332
+  ypos -748
+ }
+ Dot {
+  name Dot26
+  xpos 2096
+  ypos -564
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Spotty.png
+  format "195 195 0 0 195 195 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read42
+  xpos 2183
+  ypos -748
+ }
+ Dot {
+  name Dot25
+  xpos 1976
+  ypos -572
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Spots.png
+  format "288 288 0 0 288 288 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read43
+  xpos 2065
+  ypos -739
+ }
+ Dot {
+  name Dot24
+  xpos 1868
+  ypos -572
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Specks.png
+  format "386 386 0 0 386 386 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read44
+  xpos 1946
+  ypos -740
+ }
+ Dot {
+  name Dot23
+  xpos 1771
+  ypos -579
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Soft.png
+  format "458 458 0 0 458 458 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read45
+  xpos 1846
+  ypos -743
+ }
+ Dot {
+  name Dot22
+  xpos 1661
+  ypos -579
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Silk.png
+  format "266 266 0 0 266 266 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read46
+  xpos 1678
+  ypos -746
+ }
+ Dot {
+  name Dot21
+  xpos 1545
+  ypos -571
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Refractive.png
+  format "231 231 0 0 231 231 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read47
+  xpos 1556
+  ypos -744
+ }
+ Dot {
+  name Dot20
+  xpos 1435
+  ypos -579
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Octogon.png
+  format "266 266 0 0 266 266 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read50
+  xpos 1455
+  ypos -746
+ }
+ Dot {
+  name Dot19
+  xpos 1320
+  ypos -571
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Petagon.png
+  format "318 318 0 0 318 318 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read54
+  xpos 1340
+  ypos -749
+ }
+ Dot {
+  name Dot18
+  xpos 1202
+  ypos -573
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Orb.png
+  format "180 180 0 0 180 180 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read49
+  xpos 1067
+  ypos -750
+ }
+ Dot {
+  name Dot17
+  xpos 1095
+  ypos -574
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Plain.png
+  format "233 233 0 0 233 233 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read48
+  xpos 955
+  ypos -753
+ }
+ Dot {
+  name Dot16
+  xpos 975
+  ypos -574
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Obscured.png
+  format "434 434 0 0 434 434 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read53
+  xpos 838
+  ypos -762
+ }
+ Dot {
+  name Dot15
+  xpos 869
+  ypos -578
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Moon.png
+  format "269 269 0 0 269 269 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read14
+  xpos 728
+  ypos -754
+ }
+ Dot {
+  name Dot14
+  xpos 758
+  ypos -574
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Messy.png
+  format "270 270 0 0 270 270 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read29
+  xpos 587
+  ypos -741
+ }
+ Dot {
+  name Dot13
+  xpos 647
+  ypos -582
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Green.png
+  format "800 800 0 0 800 800 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read30
+  xpos 475
+  ypos -745
+ }
+ Dot {
+  name Dot12
+  xpos 550
+  ypos -574
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Grainy.png
+  format "313 313 0 0 313 313 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read31
+  xpos 360
+  ypos -743
+ }
+ Dot {
+  name Dot11
+  xpos 424
+  ypos -570
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Ghost.png
+  format "341 341 0 0 341 341 1 "
+  origset true
+  auto_alpha true
+  name Read32
+  xpos 245
+  ypos -745
+ }
+ Dot {
+  name Dot10
+  xpos 332
+  ypos -574
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Disc.png
+  format "93 93 0 0 93 93 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read33
+  xpos 55
+  ypos -743
+ }
+ Dot {
+  name Dot9
+  xpos 218
+  ypos -582
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Confusion.png
+  format "175 175 0 0 175 175 1 "
+  origset true
+  auto_alpha true
+  name Read34
+  xpos -57
+  ypos -736
+ }
+ Dot {
+  name Dot8
+  xpos 120
+  ypos -578
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Clean.png
+  format "110 110 0 0 110 110 1 "
+  origset true
+  auto_alpha true
+  name Read35
+  xpos -177
+  ypos -734
+ }
+ Dot {
+  name Dot7
+  xpos 30
+  ypos -582
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Brown.png
+  format "800 800 0 0 800 800 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read36
+  xpos -292
+  ypos -735
+ }
+ Dot {
+  name Dot6
+  xpos -117
+  ypos -583
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Blurry.png
+  format "409 409 0 0 409 409 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read37
+  xpos -442
+  ypos -742
+ }
+ Dot {
+  name Dot5
+  xpos -196
+  ypos -575
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Blades.png
+  format "125 125 0 0 125 125 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read38
+  xpos -555
+  ypos -743
+ }
+ Dot {
+  name Dot4
+  xpos -319
+  ypos -571
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Big-Spots.png
+  format "204 209 0 0 204 209 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read39
+  xpos -669
+  ypos -739
+ }
+ Dot {
+  name Dot3
+  xpos -426
+  ypos -578
+ }
+ Read {
+  inputs 0
+  file_type png
+  file /uvfx/Library/2D/Elements/Lens_iris/Iris_Backlight.png
+  format "101 101 0 0 101 101 1 "
+  origset true
+  auto_alpha true
+  in_colorspace linear
+  out_colorspace linear
+  name Read40
+  xpos -783
+  ypos -739
+ }
+ Dot {
+  name Dot2
+  xpos -563
+  ypos -573
+ }
+ Switch {
+  inputs 27
+  which {{Choose_Shape}}
+  name Switch2
+  xpos 995
+  ypos 23
+ }
+ Expression {
+  expr3 r+g+b
+  name Expression1
+  xpos 995
+  ypos 47
+ }
+ Reformat {
+  format "512 512 0 0 512 512 1 square_512"
+  pbb true
+  name Reformat2
+  xpos 995
+  ypos 77
+ }
+ Transform {
+  center {{width/2} {height/2}}
+  black_outside false
+  name Transform1
+  xpos 995
+  ypos 145
+  addUserKnob {20 user}
+  addUserKnob {7 aspect_ratio R 0 4}
+ }
+ Dot {
+  name Dot1
+  xpos 1023
+  ypos 180
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge1
+  xpos 993
+  ypos 237
+  disable {{"! _1"}}
+ }
+ Reformat {
+  format "256 256 0 0 256 256 1 square_256"
+  pbb true
+  name Reformat1
+  xpos 993
+  ypos 287
+ }
+ Crop {
+  preset square
+  box {0 0 {input.width} {input.height}}
+  reformat true
+  crop false
+  name Crop1
+  xpos 993
+  ypos 351
+ }
+ Output {
+  name Output1
+  xpos 993
+  ypos 440
+ }
+ 	end_group
