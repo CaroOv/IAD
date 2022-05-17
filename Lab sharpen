@@ -1,0 +1,173 @@
+#! C:/Program Files/Nuke10.0v3/nuke-10.0.3.dll -nx
+version 10.0 v3
+Group {
+name LabSharpen
+ inputs 2
+ tile_color 0xff8830ff
+ addUserKnob {20 LabSharpen}
+ addUserKnob {7 SharpenL R 0 100}
+ SharpenL 5
+ addUserKnob {7 BlurA R 0 200}
+ addUserKnob {7 BlurB R 0 200}
+ addUserKnob {4 Mode M {"LAB Preview" "RGB Output"}}
+ Mode "RGB Output"
+ addUserKnob {6 compat l "Legacy Compatibility" t "Previous versions of this node erroneously tried to account for the pixel aspect ratio (of the root node!). The effect is that the height of the blur kernel is reduced for non-square-pixel formats. This has now been fixed, but enable this to use the old behaviour if compatibility is needed." +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 maskChannel l "Mask Channel" T Keymix1.maskChannel}
+ addUserKnob {41 invertMask l invert -STARTLINE T Keymix1.invertMask}
+}
+ Input {
+ inputs 0
+ name mask
+ label "\[value number]"
+ xpos 52
+ ypos 394
+ number 1
+ }
+set N8af93400 [stack 0]
+ Invert {
+ name Invert1
+ xpos 162
+ ypos 394
+ }
+push $N8af93400
+ Shuffle {
+ red white
+ green white
+ blue white
+ alpha white
+ name Shuffle1
+ selected true
+ xpos 52
+ ypos 325
+ }
+ Add {
+ value 1
+ name Add1
+ xpos 162
+ ypos 325
+ }
+ Clamp {
+ minimum 1
+ name Clamp1
+ xpos 272
+ ypos 325
+ }
+ Switch {
+ inputs 2
+ which {{"\[exists parent.input1]"}}
+ name Switch1
+ xpos 272
+ ypos 400
+ }
+ Input {
+ inputs 0
+ name Input
+ label "\[value number]"
+ xpos 273
+ ypos -101
+ }
+set Na90eac00 [stack 0]
+ Dot {
+ name Dot2
+ label " "
+ note_font "Arial Black"
+ note_font_size 30
+ xpos 682
+ ypos -91
+ }
+ Dot {
+ name Dot3
+ label " "
+ note_font "Arial Black"
+ note_font_size 30
+ xpos 682
+ ypos 404
+ }
+push $Na90eac00
+ ColorMatrix {
+ matrix {
+ {0.412424 0.357579 0.180464}
+ {0.212656 0.715158 0.0721856}
+ {0.0193324 0.119193 0.950444}
+ }
+ name RGBtoXYZ
+ xpos 273
+ ypos 27
+ }
+ Expression {
+ expr0 (116*pow(g,1/3)-16)/100
+ expr1 500*(pow(r,1/3)-pow(g,1/3))/100
+ expr2 200*(pow(g,1/3)-pow(b,1/3))/100
+ name __XYZ_Lab__
+ xpos 273
+ ypos 53
+ }
+ Sharpen {
+ channels rgb
+ size {{SharpenL} {"w / (parent.compat ? root.pixel_aspect : 1)"}}
+ name SharpenLAB
+ xpos 273
+ ypos 83
+ }
+ Blur {
+ channels {-rgba.red rgba.green -rgba.blue none}
+ size {{BlurA} {"w / (parent.compat ? root.pixel_aspect : 1)"}}
+ name BlurA
+ xpos 273
+ ypos 109
+ }
+ Blur {
+ channels {-rgba.red -rgba.green rgba.blue none}
+ size {{BlurB} {"w / (parent.compat ? root.pixel_aspect : 1)"}}
+ name BlurB
+ xpos 273
+ ypos 151
+ }
+set Na8dfac00 [stack 0]
+ Expression {
+ expr0 pow(((g*100)/500+(((r*100)+16)/116)),3)
+ expr1 pow(((r*100+16)/116),3)
+ expr2 pow((((r*100+16)/116)-(b*100)/200),3)
+ name LabXyz
+ xpos 273
+ ypos 193
+ }
+ ColorMatrix {
+ matrix {
+ {0.412424 0.357579 0.180464}
+ {0.212656 0.715158 0.0721856}
+ {0.0193324 0.119193 0.950444}
+ }
+ invert true
+ name XYZtoRGB
+ xpos 273
+ ypos 221
+ }
+push $Na8dfac00
+ Dot {
+ name Dot1
+ xpos 441
+ ypos 161
+ }
+ Switch {
+ inputs 2
+ which {{Mode}}
+ name LabPreview
+ xpos 407
+ ypos 221
+ }
+ Keymix {
+ inputs 3
+ channels rgb
+ maskChannel -rgba.alpha
+ name Keymix1
+ xpos 407
+ ypos 400
+ }
+ Output {
+ name Output1
+ xpos 407
+ ypos 542
+ }
+end_group
