@@ -1,0 +1,190 @@
+
+set cut_paste_input [stack 0]
+version 11.3 v1
+push $cut_paste_input
+push 0
+Group {
+inputs 2
+name prcm_IrisDefocus1
+tile_color 0xd68955ff
+label "v0.4\n"
+selected true
+xpos -295
+ypos -20
+addUserKnob {20 User}
+addUserKnob {7 size l "Defocus Size" R 0 200}
+size 100
+addUserKnob {7 postBlurSize l "Post Blur Size" R 0 10}
+postBlurSize 6
+addUserKnob {26 ""}
+addUserKnob {20 chromaticAbb l "Chromatic Abberation" n 1}
+addUserKnob {6 chromatic l "Activate Chromatic Abb" +STARTLINE}
+addUserKnob {7 red l Red R -10 10}
+red -2
+addUserKnob {7 green l Green R -10 10}
+addUserKnob {7 blue l Blue R -10 10}
+blue 2
+addUserKnob {20 endGroup n -1}
+addUserKnob {26 ""}
+}
+Input {
+inputs 0
+name image
+selected true
+xpos 510
+ypos -249
+}
+Dot {
+name Dot1
+xpos 544
+ypos -96
+}
+set Na1b62f0 [stack 0]
+Dot {
+name Dot3
+xpos 1314
+ypos -96
+}
+Dot {
+name Dot2
+xpos 1314
+ypos 654
+}
+Input {
+inputs 0
+name iris
+xpos 393
+ypos -249
+number 1
+}
+Transform {
+scale {{size*0.0085}}
+center {{width/2} {height/2}}
+name Transform_scale
+xpos 400
+ypos -9
+}
+push $Na1b62f0
+Convolve2 {
+inputs 2
+filter_channel rgba.red
+name Convolve1
+xpos 510
+ypos -14
+}
+Dot {
+name Dot4
+xpos 544
+ypos 114
+}
+set Nda587f0 [stack 0]
+Dot {
+name Dot5
+xpos 874
+ypos 114
+}
+set Nda5d350 [stack 0]
+Remove {
+operation keep
+channels {-rgba.red -rgba.green rgba.blue rgba.alpha}
+name Remove6
+xpos 950
+ypos 196
+}
+Transform {
+translate {{blue} 0}
+center {1024 778}
+black_outside false
+name Transform6
+xpos 950
+ypos 231
+}
+Multiply {
+channels alpha
+value 0.3333333333
+name Multiply6
+xpos 950
+ypos 286
+}
+push 0
+push $Nda5d350
+Remove {
+operation keep
+channels {-rgba.red rgba.green -rgba.blue rgba.alpha}
+name Remove5
+xpos 840
+ypos 196
+}
+Transform {
+translate {{green} 0}
+center {1024 778}
+black_outside false
+name Transform5
+xpos 840
+ypos 231
+}
+Multiply {
+channels alpha
+value 0.3333333333
+name Multiply5
+xpos 840
+ypos 286
+}
+push $Nda5d350
+Remove {
+operation keep
+channels {rgba.red -rgba.green -rgba.blue rgba.alpha}
+name Remove4
+xpos 730
+ypos 196
+}
+Transform {
+translate {{red} 0}
+center {1024 778}
+black_outside false
+name Transform4
+xpos 730
+ypos 231
+}
+Multiply {
+channels alpha
+value 0.3333333333
+name Multiply4
+xpos 730
+ypos 286
+}
+Merge2 {
+inputs 3+1
+operation plus
+name Merge2
+xpos 840
+ypos 351
+}
+push $Nda587f0
+Switch {
+inputs 2
+which {{chromatic}}
+name Switch_chromaticAbb
+xpos 510
+ypos 351
+}
+Switch {
+inputs 2
+which {{size==0?1:0}}
+name Switch1
+xpos 510
+ypos 651
+}
+Blur {
+size {{postBlurSize}}
+name Blur1
+xpos 510
+ypos 706
+}
+Output {
+name Output1
+xpos 510
+ypos 801
+}
+end_group
+
