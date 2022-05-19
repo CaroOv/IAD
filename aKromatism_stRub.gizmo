@@ -1,6 +1,6 @@
 #! /Applications/Nuke5.1v5/Nuke5.1v5.app/Contents/MacOS/Nuke5.1v5 -nx
 version 5.1500
-Gizmo {
+Group {
  note_font "Verdana Bold"
  note_font_size 13
  note_font_color 0x7f1f00ff
