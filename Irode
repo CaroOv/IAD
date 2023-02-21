@@ -1,0 +1,1586 @@
+Group {
+inputs 2
+name iRode
+tile_color 0xcc804eff
+selected true
+xpos 1166
+ypos 3059
+addUserKnob {20 Controls}
+addUserKnob {41 output l channel T Merge1.output}
+addUserKnob {7 size R -100 100}
+size 1
+addUserKnob {4 type l "erode type" M {erode filter dilate}}
+type dilate
+}
+BackdropNode {
+inputs 0
+name BackdropNode2
+tile_color 0x262626ff
+note_font_size 42
+xpos 123
+ypos -365
+bdwidth 2572
+bdheight 269
+}
+BackdropNode {
+inputs 0
+name BackdropNode5
+tile_color 0x262626ff
+note_font_size 42
+xpos 108
+ypos -34
+bdwidth 2572
+bdheight 269
+}
+BackdropNode {
+inputs 0
+name BackdropNode7
+tile_color 0x262626ff
+note_font_size 42
+xpos 108
+ypos 336
+bdwidth 2572
+bdheight 269
+}
+Blur {
+inputs 0
+channels rgb
+size {{blur/10/4}}
+name Blur11
+xpos 123
+ypos -371
+}
+Input {
+inputs 0
+name image
+label rgba
+xpos -282
+ypos -767
+}
+Dot {
+name Dot1
+xpos -248
+ypos -272
+}
+set Nbdf34c30 [stack 0]
+Dot {
+name Dot25
+xpos -248
+ypos -155
+}
+set N56fdd850 [stack 0]
+Dot {
+name Dot58
+xpos -248
+ypos 63
+}
+set Ne5003fc0 [stack 0]
+Dot {
+name Dot56
+xpos -248
+ypos 180
+}
+set Nd1f33c70 [stack 0]
+Dot {
+name Dot73
+xpos -248
+ypos 433
+}
+set N554f98e0 [stack 0]
+Dot {
+name Dot88
+xpos -248
+ypos 552
+}
+set Nd95ca10 [stack 0]
+Dot {
+name Dot90
+xpos -248
+ypos 916
+}
+Input {
+inputs 0
+name mask
+label a
+xpos -113
+ypos -764
+number 1
+}
+Dot {
+name Dot6
+xpos -79
+ypos -312
+}
+set N574f3ff0 [stack 0]
+Dot {
+name Dot57
+xpos -79
+ypos 23
+}
+set N6028fb20 [stack 0]
+Dot {
+name Dot59
+xpos -79
+ypos 393
+}
+Dot {
+name Dot60
+xpos 246
+ypos 393
+}
+set N58aa1510 [stack 0]
+Dot {
+name Dot61
+xpos 445
+ypos 393
+}
+set N5295fcf0 [stack 0]
+Dot {
+name Dot62
+xpos 651
+ypos 393
+}
+set N2aed6250 [stack 0]
+Dot {
+name Dot63
+xpos 850
+ypos 393
+}
+set N413dc620 [stack 0]
+Dot {
+name Dot64
+xpos 1045
+ypos 393
+}
+set N52962db0 [stack 0]
+Dot {
+name Dot65
+xpos 1233
+ypos 392
+}
+set N589d6780 [stack 0]
+Dot {
+name Dot66
+xpos 1438
+ypos 392
+}
+set N574ea1a0 [stack 0]
+Dot {
+name Dot67
+xpos 1634
+ypos 392
+}
+set N59500ef0 [stack 0]
+Dot {
+name Dot68
+xpos 1834
+ypos 392
+}
+set Nff432450 [stack 0]
+Dot {
+name Dot69
+xpos 2036
+ypos 392
+}
+set N54ebdcd0 [stack 0]
+Dot {
+name Dot70
+xpos 2234
+ypos 392
+}
+set N594dd9c0 [stack 0]
+Dot {
+name Dot71
+xpos 2432
+ypos 391
+}
+set N413ea940 [stack 0]
+Dot {
+name Dot72
+xpos 2624
+ypos 391
+}
+Grade {
+channels rgba
+blackpoint 0.9
+white_clamp true
+name Grade27
+xpos 2590
+ypos 484
+}
+push $N554f98e0
+Dot {
+name Dot74
+xpos 152
+ypos 433
+}
+set N6163b8e0 [stack 0]
+Dot {
+name Dot76
+xpos 354
+ypos 433
+}
+set N574f2390 [stack 0]
+Dot {
+name Dot77
+xpos 557
+ypos 433
+}
+set N557afde0 [stack 0]
+Dot {
+name Dot78
+xpos 756
+ypos 433
+}
+set N62c6d7f0 [stack 0]
+Dot {
+name Dot79
+xpos 954
+ypos 433
+}
+set N5e4c2f60 [stack 0]
+Dot {
+name Dot80
+xpos 1142
+ypos 432
+}
+set N594e2b80 [stack 0]
+Dot {
+name Dot81
+xpos 1347
+ypos 432
+}
+set Nec48f70 [stack 0]
+Dot {
+name Dot82
+xpos 1543
+ypos 432
+}
+set Nc7f4e110 [stack 0]
+Dot {
+name Dot83
+xpos 1743
+ypos 432
+}
+set N56fe18d0 [stack 0]
+Dot {
+name Dot84
+xpos 1945
+ypos 432
+}
+set N58be88d0 [stack 0]
+Dot {
+name Dot85
+xpos 2143
+ypos 432
+}
+set N594f3b20 [stack 0]
+Dot {
+name Dot86
+xpos 2341
+ypos 431
+}
+set Ne6209760 [stack 0]
+Dot {
+name Dot87
+xpos 2533
+ypos 431
+}
+Dilate {
+size {{-parent.Erode13.size}}
+name Dilate13
+xpos 2499
+ypos 484
+}
+push $N413ea940
+Grade {
+channels rgba
+blackpoint 0.8
+whitepoint 0.9
+white_clamp true
+name Grade28
+xpos 2398
+ypos 484
+}
+push $Ne6209760
+Dilate {
+size {{-parent.Erode12.size}}
+name Dilate12
+xpos 2307
+ypos 484
+}
+push $N594dd9c0
+Grade {
+channels rgba
+blackpoint 0.7
+whitepoint 0.8
+white_clamp true
+name Grade29
+xpos 2200
+ypos 484
+}
+push $N594f3b20
+Dilate {
+size {{-parent.Erode11.size}}
+name Dilate11
+xpos 2109
+ypos 484
+}
+push $N54ebdcd0
+Grade {
+channels rgba
+blackpoint 0.6
+whitepoint 0.7
+white_clamp true
+name Grade30
+xpos 2002
+ypos 484
+}
+push $N58be88d0
+Dilate {
+size {{-parent.Erode10.size}}
+name Dilate10
+xpos 1911
+ypos 484
+}
+push $Nff432450
+Grade {
+channels rgba
+blackpoint 0.5
+whitepoint 0.6
+white_clamp true
+name Grade31
+xpos 1800
+ypos 484
+}
+push $N56fe18d0
+Dilate {
+size {{-parent.Erode9.size}}
+name Dilate9
+xpos 1709
+ypos 484
+}
+push $N59500ef0
+Grade {
+channels rgba
+blackpoint 0.4
+whitepoint 0.5
+white_clamp true
+name Grade32
+xpos 1600
+ypos 484
+}
+push $Nc7f4e110
+Dilate {
+size {{-parent.Erode8.size}}
+name Dilate8
+xpos 1509
+ypos 484
+}
+push $N574ea1a0
+Grade {
+channels rgba
+blackpoint 0.3
+whitepoint 0.4
+white_clamp true
+name Grade33
+xpos 1404
+ypos 484
+}
+push $Nec48f70
+Dilate {
+size {{-parent.Erode7.size}}
+name Dilate7
+xpos 1313
+ypos 484
+}
+push $N589d6780
+Grade {
+channels rgba
+blackpoint 0.2
+whitepoint 0.3
+white_clamp true
+name Grade34
+xpos 1199
+ypos 484
+}
+push $N594e2b80
+Dilate {
+size {{-parent.Erode6.size}}
+name Dilate6
+xpos 1108
+ypos 485
+}
+push $N52962db0
+Grade {
+channels rgba
+blackpoint 0.1
+whitepoint 0.2
+white_clamp true
+name Grade35
+xpos 1011
+ypos 484
+}
+push $N5e4c2f60
+Dilate {
+size {{-parent.Erode5.size}}
+name Dilate5
+xpos 920
+ypos 484
+}
+push $N413dc620
+Grade {
+channels rgba
+blackpoint 0.075
+whitepoint 0.1
+white_clamp true
+name Grade36
+xpos 816
+ypos 484
+}
+push $N62c6d7f0
+Dilate {
+size {{-parent.Erode4.size}}
+name Dilate4
+xpos 722
+ypos 484
+}
+push $N2aed6250
+Grade {
+channels rgba
+blackpoint 0.05
+whitepoint 0.075
+white_clamp true
+name Grade37
+xpos 617
+ypos 484
+}
+push $N557afde0
+Dilate {
+size {{-parent.Erode3.size}}
+name Dilate3
+xpos 523
+ypos 484
+}
+push $N5295fcf0
+Grade {
+channels rgba
+blackpoint 0.025
+whitepoint 0.05
+white_clamp true
+name Grade38
+xpos 411
+ypos 484
+}
+push $N574f2390
+Dilate {
+size {{-parent.Erode2.size}}
+name Dilate2
+xpos 320
+ypos 484
+}
+push $N58aa1510
+Grade {
+channels rgba
+whitepoint 0.025
+white_clamp true
+name Grade39
+xpos 212
+ypos 484
+}
+push $N6163b8e0
+Dilate {
+size {{-parent.Erode1.size}}
+name Dilate1
+xpos 118
+ypos 484
+}
+push $Nd95ca10
+Keymix {
+inputs 3
+bbox B
+name Keymix27
+xpos 118
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix28
+xpos 320
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix29
+xpos 523
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix30
+xpos 722
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix31
+xpos 920
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix32
+xpos 1108
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix33
+xpos 1313
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix34
+xpos 1509
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix35
+xpos 1709
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix36
+xpos 1911
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix37
+xpos 2109
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix38
+xpos 2307
+ypos 542
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix39
+xpos 2499
+ypos 542
+}
+push $N6028fb20
+Dot {
+name Dot2
+xpos 246
+ypos 23
+}
+set N8a200d00 [stack 0]
+Dot {
+name Dot4
+xpos 445
+ypos 23
+}
+set N8a1ef280 [stack 0]
+Dot {
+name Dot32
+xpos 651
+ypos 23
+}
+set N8a209ed0 [stack 0]
+Dot {
+name Dot33
+xpos 850
+ypos 23
+}
+set N8a2055d0 [stack 0]
+Dot {
+name Dot34
+xpos 1045
+ypos 23
+}
+set N8a213090 [stack 0]
+Dot {
+name Dot35
+xpos 1233
+ypos 22
+}
+set N8a217970 [stack 0]
+Dot {
+name Dot36
+xpos 1438
+ypos 22
+}
+set N8a20e790 [stack 0]
+Dot {
+name Dot37
+xpos 1634
+ypos 22
+}
+set N8a220b30 [stack 0]
+Dot {
+name Dot38
+xpos 1834
+ypos 22
+}
+set N8a225410 [stack 0]
+Dot {
+name Dot39
+xpos 2036
+ypos 22
+}
+set N8a21c230 [stack 0]
+Dot {
+name Dot40
+xpos 2234
+ypos 22
+}
+set N8a229cd0 [stack 0]
+Dot {
+name Dot41
+xpos 2432
+ypos 21
+}
+set N2446d020 [stack 0]
+Dot {
+name Dot42
+xpos 2624
+ypos 21
+}
+Grade {
+channels rgba
+blackpoint 0.9
+white_clamp true
+name Grade12
+xpos 2590
+ypos 114
+}
+push $Ne5003fc0
+Dot {
+name Dot43
+xpos 152
+ypos 63
+}
+set N24486490 [stack 0]
+Dot {
+name Dot44
+xpos 354
+ypos 63
+}
+set N8a22e5b0 [stack 0]
+Dot {
+name Dot45
+xpos 557
+ypos 63
+}
+set N2448ab20 [stack 0]
+Dot {
+name Dot46
+xpos 756
+ypos 63
+}
+set N24493d20 [stack 0]
+Dot {
+name Dot47
+xpos 954
+ypos 63
+}
+set N2448f400 [stack 0]
+Dot {
+name Dot48
+xpos 1142
+ypos 62
+}
+set N244985e0 [stack 0]
+Dot {
+name Dot49
+xpos 1347
+ypos 62
+}
+set N244a1830 [stack 0]
+Dot {
+name Dot50
+xpos 1543
+ypos 62
+}
+set N244a60e0 [stack 0]
+Dot {
+name Dot51
+xpos 1743
+ypos 62
+}
+set N244aa9a0 [stack 0]
+Dot {
+name Dot52
+xpos 1945
+ypos 62
+}
+set N244af260 [stack 0]
+Dot {
+name Dot53
+xpos 2143
+ypos 62
+}
+set N244b3b20 [stack 0]
+Dot {
+name Dot54
+xpos 2341
+ypos 61
+}
+set N2449cec0 [stack 0]
+Dot {
+name Dot55
+xpos 2533
+ypos 61
+}
+FilterErode {
+channels all
+size {{parent.Erode13.size}}
+name FilterErode13
+xpos 2499
+ypos 114
+}
+push $N2446d020
+Grade {
+channels rgba
+blackpoint 0.8
+whitepoint 0.9
+white_clamp true
+name Grade15
+xpos 2398
+ypos 114
+}
+push $N2449cec0
+FilterErode {
+channels all
+size {{parent.Erode12.size}}
+name FilterErode12
+xpos 2307
+ypos 114
+}
+push $N8a229cd0
+Grade {
+channels rgba
+blackpoint 0.7
+whitepoint 0.8
+white_clamp true
+name Grade16
+xpos 2200
+ypos 114
+}
+push $N244b3b20
+FilterErode {
+channels all
+size {{parent.Erode11.size}}
+name FilterErode11
+xpos 2109
+ypos 114
+}
+push $N8a21c230
+Grade {
+channels rgba
+blackpoint 0.6
+whitepoint 0.7
+white_clamp true
+name Grade17
+xpos 2002
+ypos 114
+}
+push $N244af260
+FilterErode {
+channels all
+size {{parent.Erode10.size}}
+name FilterErode10
+xpos 1911
+ypos 114
+}
+push $N8a225410
+Grade {
+channels rgba
+blackpoint 0.5
+whitepoint 0.6
+white_clamp true
+name Grade18
+xpos 1800
+ypos 114
+}
+push $N244aa9a0
+FilterErode {
+channels all
+size {{parent.Erode9.size}}
+name FilterErode9
+xpos 1709
+ypos 114
+}
+push $N8a220b30
+Grade {
+channels rgba
+blackpoint 0.4
+whitepoint 0.5
+white_clamp true
+name Grade19
+xpos 1600
+ypos 114
+}
+push $N244a60e0
+FilterErode {
+channels all
+size {{parent.Erode8.size}}
+name FilterErode8
+xpos 1509
+ypos 114
+}
+push $N8a20e790
+Grade {
+channels rgba
+blackpoint 0.3
+whitepoint 0.4
+white_clamp true
+name Grade20
+xpos 1404
+ypos 114
+}
+push $N244a1830
+FilterErode {
+channels all
+size {{parent.Erode7.size}}
+name FilterErode7
+xpos 1313
+ypos 114
+}
+push $N8a217970
+Grade {
+channels rgba
+blackpoint 0.2
+whitepoint 0.3
+white_clamp true
+name Grade21
+xpos 1199
+ypos 114
+}
+push $N244985e0
+FilterErode {
+channels all
+size {{parent.Erode6.size}}
+name FilterErode6
+xpos 1108
+ypos 115
+}
+push $N8a213090
+Grade {
+channels rgba
+blackpoint 0.1
+whitepoint 0.2
+white_clamp true
+name Grade22
+xpos 1011
+ypos 114
+}
+push $N2448f400
+FilterErode {
+channels all
+size {{parent.Erode5.size}}
+name FilterErode5
+xpos 920
+ypos 114
+}
+push $N8a2055d0
+Grade {
+channels rgba
+blackpoint 0.075
+whitepoint 0.1
+white_clamp true
+name Grade23
+xpos 816
+ypos 114
+}
+push $N24493d20
+FilterErode {
+channels all
+size {{parent.Erode4.size}}
+name FilterErode4
+xpos 722
+ypos 114
+}
+push $N8a209ed0
+Grade {
+channels rgba
+blackpoint 0.05
+whitepoint 0.075
+white_clamp true
+name Grade24
+xpos 617
+ypos 114
+}
+push $N2448ab20
+FilterErode {
+channels all
+size {{parent.Erode3.size}}
+name FilterErode3
+xpos 523
+ypos 114
+}
+push $N8a1ef280
+Grade {
+channels rgba
+blackpoint 0.025
+whitepoint 0.05
+white_clamp true
+name Grade25
+xpos 411
+ypos 114
+}
+push $N8a22e5b0
+FilterErode {
+channels all
+size {{parent.Erode2.size}}
+name FilterErode2
+xpos 320
+ypos 114
+}
+push $N8a200d00
+Grade {
+channels rgba
+whitepoint 0.025
+white_clamp true
+name Grade26
+xpos 212
+ypos 114
+}
+push $N24486490
+FilterErode {
+channels all
+size {{parent.Erode1.size}}
+name FilterErode1
+xpos 118
+ypos 114
+}
+push $Nd1f33c70
+Keymix {
+inputs 3
+bbox B
+name Keymix1
+xpos 118
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix15
+xpos 320
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix16
+xpos 523
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix17
+xpos 722
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix18
+xpos 920
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix19
+xpos 1108
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix20
+xpos 1313
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix21
+xpos 1509
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix22
+xpos 1709
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix23
+xpos 1911
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix24
+xpos 2109
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix25
+xpos 2307
+ypos 172
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix26
+xpos 2499
+ypos 172
+}
+Dot {
+name Dot89
+xpos 2925
+ypos 182
+}
+push $N574f3ff0
+Dot {
+name Dot23
+xpos 255
+ypos -312
+}
+set N78e63d00 [stack 0]
+Dot {
+name Dot26
+xpos 454
+ypos -312
+}
+set N62bd1410 [stack 0]
+Dot {
+name Dot28
+xpos 660
+ypos -312
+}
+set N62bd5cc0 [stack 0]
+Dot {
+name Dot30
+xpos 859
+ypos -312
+}
+set N62bda580 [stack 0]
+Dot {
+name Dot7
+xpos 1054
+ypos -312
+}
+set N62bdee40 [stack 0]
+Dot {
+name Dot5
+xpos 1242
+ypos -313
+}
+set N62be3700 [stack 0]
+Dot {
+name Dot9
+xpos 1447
+ypos -313
+}
+set N62be7fc0 [stack 0]
+Dot {
+name Dot11
+xpos 1643
+ypos -313
+}
+set N62bccab0 [stack 0]
+Dot {
+name Dot13
+xpos 1843
+ypos -313
+}
+set N62bf1180 [stack 0]
+Dot {
+name Dot15
+xpos 2045
+ypos -313
+}
+set N62bec880 [stack 0]
+Dot {
+name Dot17
+xpos 2243
+ypos -313
+}
+set N62bf5a60 [stack 0]
+Dot {
+name Dot19
+xpos 2441
+ypos -314
+}
+set N62bfec50 [stack 0]
+Dot {
+name Dot21
+xpos 2633
+ypos -314
+}
+Grade {
+channels rgba
+blackpoint 0.9
+white_clamp true
+name Grade8
+xpos 2599
+ypos -225
+}
+push $Nbdf34c30
+Dot {
+name Dot24
+xpos 161
+ypos -272
+}
+set N62c182b0 [stack 0]
+Dot {
+name Dot27
+xpos 363
+ypos -272
+}
+set N62c1c940 [stack 0]
+Dot {
+name Dot29
+xpos 566
+ypos -272
+}
+set N62c21200 [stack 0]
+Dot {
+name Dot31
+xpos 765
+ypos -272
+}
+set N62c25ac0 [stack 0]
+Dot {
+name Dot3
+xpos 963
+ypos -272
+}
+set N62daa370 [stack 0]
+Dot {
+name Dot8
+xpos 1151
+ypos -273
+}
+set N62c03510 [stack 0]
+Dot {
+name Dot10
+xpos 1356
+ypos -273
+}
+set N62db3540 [stack 0]
+Dot {
+name Dot12
+xpos 1552
+ypos -273
+}
+set N62db7e00 [stack 0]
+Dot {
+name Dot14
+xpos 1752
+ypos -273
+}
+set N62daec30 [stack 0]
+Dot {
+name Dot16
+xpos 1954
+ypos -273
+}
+set N62dc0ff0 [stack 0]
+Dot {
+name Dot18
+xpos 2152
+ypos -273
+}
+set N62dc58b0 [stack 0]
+Dot {
+name Dot20
+xpos 2350
+ypos -274
+}
+set N62dca170 [stack 0]
+Dot {
+name Dot22
+xpos 2542
+ypos -274
+}
+Erode {
+channels all
+size {{-parent.size}}
+name Erode13
+xpos 2508
+ypos -226
+}
+push $N62bfec50
+Grade {
+channels rgba
+blackpoint 0.8
+whitepoint 0.9
+white_clamp true
+name Grade7
+xpos 2407
+ypos -225
+}
+push $N62dca170
+Erode {
+channels all
+size {{-parent.size/10*9}}
+name Erode12
+xpos 2316
+ypos -225
+}
+push $N62bf5a60
+Grade {
+channels rgba
+blackpoint 0.7
+whitepoint 0.8
+white_clamp true
+name Grade6
+xpos 2209
+ypos -225
+}
+push $N62dc58b0
+Erode {
+channels all
+size {{-parent.size/10*8}}
+name Erode11
+xpos 2118
+ypos -223
+}
+push $N62bec880
+Grade {
+channels rgba
+blackpoint 0.6
+whitepoint 0.7
+white_clamp true
+name Grade5
+xpos 2011
+ypos -225
+}
+push $N62dc0ff0
+Erode {
+channels all
+size {{-parent.size/10*7}}
+name Erode10
+xpos 1920
+ypos -227
+}
+push $N62bf1180
+Grade {
+channels rgba
+blackpoint 0.5
+whitepoint 0.6
+white_clamp true
+name Grade4
+xpos 1809
+ypos -225
+}
+push $N62daec30
+Erode {
+channels all
+size {{-parent.size/10*6}}
+name Erode9
+xpos 1718
+ypos -228
+}
+push $N62bccab0
+Grade {
+channels rgba
+blackpoint 0.4
+whitepoint 0.5
+white_clamp true
+name Grade3
+xpos 1609
+ypos -225
+}
+push $N62db7e00
+Erode {
+channels all
+size {{-parent.size/10*5}}
+name Erode8
+xpos 1518
+ypos -229
+}
+push $N62be7fc0
+Grade {
+channels rgba
+blackpoint 0.3
+whitepoint 0.4
+white_clamp true
+name Grade2
+xpos 1413
+ypos -225
+}
+push $N62db3540
+Erode {
+channels all
+size {{-parent.size/10*4}}
+name Erode7
+xpos 1322
+ypos -228
+}
+push $N62be3700
+Grade {
+channels rgba
+blackpoint 0.2
+whitepoint 0.3
+white_clamp true
+name Grade1
+xpos 1208
+ypos -225
+}
+push $N62c03510
+Erode {
+channels all
+size {{-parent.size/10/4}}
+name Erode6
+xpos 1117
+ypos -229
+}
+push $N62bdee40
+Grade {
+channels rgba
+blackpoint 0.1
+whitepoint 0.2
+white_clamp true
+name Grade13
+xpos 1020
+ypos -225
+}
+push $N62daa370
+Erode {
+channels all
+size {{-parent.size/10*2}}
+name Erode5
+xpos 929
+ypos -226
+}
+push $N62bda580
+Grade {
+channels rgba
+blackpoint 0.075
+whitepoint 0.1
+white_clamp true
+name Grade14
+xpos 825
+ypos -225
+}
+push $N62c25ac0
+Erode {
+channels all
+size {{-parent.size/10}}
+name Erode4
+xpos 731
+ypos -220
+}
+push $N62bd5cc0
+Grade {
+channels rgba
+blackpoint 0.05
+whitepoint 0.075
+white_clamp true
+name Grade11
+xpos 626
+ypos -225
+}
+push $N62c21200
+Erode {
+channels all
+size {{-parent.size/10/4*3}}
+name Erode3
+xpos 532
+ypos -224
+}
+push $N62bd1410
+Grade {
+channels rgba
+blackpoint 0.025
+whitepoint 0.05
+white_clamp true
+name Grade10
+xpos 420
+ypos -225
+}
+push $N62c1c940
+Erode {
+channels all
+size {{-parent.size/10/4*2}}
+name Erode2
+xpos 329
+ypos -223
+}
+push $N78e63d00
+Grade {
+channels rgba
+whitepoint 0.025
+white_clamp true
+name Grade9
+xpos 221
+ypos -225
+}
+push $N62c182b0
+Erode {
+channels all
+size {{-parent.size/10/4}}
+name Erode1
+xpos 127
+ypos -227
+}
+push $N56fdd850
+Keymix {
+inputs 3
+bbox B
+name Keymix11
+xpos 127
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix12
+xpos 329
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix13
+xpos 532
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix14
+xpos 731
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix2
+xpos 929
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix3
+xpos 1117
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix4
+xpos 1322
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix5
+xpos 1518
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix6
+xpos 1718
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix7
+xpos 1920
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix8
+xpos 2118
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix9
+xpos 2316
+ypos -163
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix10
+xpos 2508
+ypos -163
+}
+Dot {
+name Dot75
+xpos 3248
+ypos -155
+}
+Switch {
+inputs 3
+which {{parent.type}}
+name Switch1
+xpos 3214
+ypos 548
+}
+Merge2 {
+inputs 2
+operation copy
+output alpha
+name Merge1
+selected true
+xpos 3214
+ypos 906
+}
+Output {
+name Output1
+xpos 3214
+ypos 1151
+}
+Viewer {
+frame 2
+frame_range 1-100
+input_number 9
+input_process false
+name Viewer1
+xpos 3464
+ypos 396
+}
+end_group
